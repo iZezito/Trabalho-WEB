@@ -25,7 +25,6 @@ public class CadastroController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        session.setMaxInactiveInterval(1500);
 
         ArrayList<Cadastro> cadastros = (ArrayList<Cadastro>) banco.findAll();
 
@@ -46,7 +45,7 @@ public class CadastroController {
             }else if(email.equals(c.getEmail()) && senha.equals(c.getSenha())){
 
                     RequestDispatcher encaminhar = request.getRequestDispatcher("/listaprodutos");
-                    session.setAttribute("tokenFuncionario", true);
+                    session.setAttribute("tokenCliente", true);
                     encaminhar.forward(request, response);
                     break;
             }else {
@@ -77,6 +76,7 @@ public class CadastroController {
     @RequestMapping(value = "/logout")
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
+        response.sendRedirect("/index.html");
 
     }
 
