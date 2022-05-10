@@ -1,0 +1,66 @@
+package com.example.trabalhoweb.classes;
+
+import javax.persistence.*;
+
+@Entity
+public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id;
+    @Column(name = "preco")
+    float preco;
+    @Column(name = "nome")
+    String nome;
+    @Column(name = "descricao")
+    String Descricao;
+    @Column(name = "estoque")
+    int estoque;
+
+    public Produto(float preco, String nome, String descricao, int estoque) {
+        this.preco = preco;
+        this.nome = nome;
+        this.Descricao = descricao;
+        this.estoque = estoque;
+    }
+
+    public Produto(){
+
+    }
+
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public float getPreco() {
+        return preco;
+    }
+    public void setPreco(int preco) {
+        this.preco = preco;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getDescricao() {
+        return Descricao;
+    }
+    public void setDescricao(String descricao) {
+        Descricao = descricao;
+    }
+    public int getEstoque() {
+        return estoque;
+    }
+    public void incrementaEstoque() {
+        this.estoque++;
+    }
+    public void diminuiEstoque() {
+        this.estoque--;
+    }
+
+
+}
