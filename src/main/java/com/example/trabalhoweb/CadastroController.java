@@ -24,7 +24,7 @@ public class CadastroController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
 
         ArrayList<Cadastro> cadastros = (ArrayList<Cadastro>) banco.findAll();
 
